@@ -1,5 +1,6 @@
 import React from 'react'
 import { toast } from 'react-hot-toast'
+import { useDispatch } from 'react-redux'
 
 
 const img1 = "https://th.bing.com/th/id/OIP.ls1kTP6fOXVWZPYPvsms0QHaGz?pid=ImgDet&rs=1"
@@ -19,9 +20,11 @@ const Home = () => {
     id:"arrtete",
   }
 ]
+const dispatch= useDispatch()
 
 const addToCartHandler =(options)=>{
-  console.log(options)
+  dispatch({type:"addToCart",payload:options})
+  dispatch({type:"calculatePrice"});
   toast.success("added to cart")
 }
 
